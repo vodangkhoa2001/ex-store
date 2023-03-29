@@ -2,5 +2,11 @@
 @layer base{
   body{
     @apply font-barlow
+    bg-white
+  }
+}
+@layer{
+  body{
+    @apply font-poppins
   }
 }
