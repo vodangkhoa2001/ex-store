@@ -1,8 +1,11 @@
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { useSwiper } from "swiper/react";
+import { useRef } from "react";
 
 function SwiperNavButtons() {
   const swiper = useSwiper();
+  // const prevRef = useRef(null);
+  // const nextRef = useRef(null);
   return (
     <div className=" flex justify-between ">
       <button
