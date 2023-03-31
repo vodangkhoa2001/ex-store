@@ -1,4 +1,5 @@
 @tailwind base;
+@tailwind components;
 @layer base{
   body{
     @apply font-barlow
@@ -8,5 +9,11 @@
 @layer{
   body{
     @apply font-poppins
+  }
+}
+
+@layer components{
+  .btn-second-hover{
+  @apply bg-secondary/90
   }
 }

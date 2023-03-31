@@ -2,6 +2,7 @@ import { CategoriesContainer } from "./CategoriesContainer";
 import { ProductContainer } from "./ProductContainer";
 
 import Title from "~/components/Title";
+import { BestSelling } from "./BestSellingContainer";
 
 function Container() {
   return (
@@ -13,6 +14,10 @@ function Container() {
       <div>
         <Title title={"Categories"} />
         <CategoriesContainer />
+      </div>
+      <div>
+        <Title title={"This Month"} />
+        <BestSelling />
       </div>
     </div>
   );
