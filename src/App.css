@@ -16,4 +16,17 @@
   .btn-second-hover{
   @apply bg-secondary/90
   }
+  .time-discount{
+   @apply lg:w-[70px] lg:h-[70px] w-[50px] h-[50px] flex items-center justify-center flex-col bg-white rounded-full
+  }
+  .bar_underline_white{
+  @apply after:w-[70px] after:h-[1px] after:bg-white after:absolute after:-bottom-1 after:left-0
+  }
+  .hover_bar_underline_white{
+  @apply hover:after:w-[70px] hover:after:h-[1px] hover:after:bg-white hover:after:absolute hover:after:-bottom-1 hover:after:left-0
+  }
+  
+  .hover_bar_underline_black{
+  @apply hover:after:w-full hover:after:h-[1px] hover:after:bg-black/70 hover:after:absolute hover:after:-bottom-1 hover:after:left-0
+  }
 }

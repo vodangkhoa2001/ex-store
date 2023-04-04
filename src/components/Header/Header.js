@@ -11,8 +11,11 @@ import config from "~/config";
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
-    <header className="bg-white border-b-[1px] border-solid border-gray-900/30">
-      <nav className="flex items-center justify-between" aria-label="Global">
+    <header className="bg-white border-b-[1px] border-solid border-gray-900/30  fixed z-50 left-0 right-0">
+      <nav
+        className="flex items-center justify-between mx-auto py-3 max-w-7xl"
+        aria-label="Global"
+      >
         <div className="flex lg:flex cursor-pointer ">
           <Link to={config.routes.home} className="p-1.5">
             <span className="text-4xl font-semibold">Ex</span>
@@ -29,30 +32,30 @@ function Header() {
           </button>
         </div>
 
-        <Popover.Group className="hidden lg:flex lg:gap-x-12 ">
+        <Popover.Group className="hidden lg:flex lg:gap-x-12 font-semibold">
           <Link
             to={config.routes.home}
-            className="font-medium leading-6 text-gray-900 hover:underline hover:decoration-gray-700/90"
+            className=" leading-6 text-black relative hover:opacity-70"
           >
-            <span>Home</span>
+            <span className="hover_bar_underline_black">Home</span>
           </Link>
           <Link
             to={config.routes.home}
-            className="font-medium leading-6 text-gray-900 hover:underline hover:decoration-gray-700/90"
+            className=" leading-6 text-black relative hover:opacity-70 "
           >
-            <span>Contact</span>
+            <span className="hover_bar_underline_black">Contact</span>
           </Link>
           <Link
             to={config.routes.home}
-            className="font-medium leading-6 text-gray-900 hover:underline hover:decoration-gray-700/90"
+            className=" leading-6 text-black relative hover:opacity-70 "
           >
-            <span>About</span>
+            <span className="hover_bar_underline_black">About</span>
           </Link>
           <Link
             to={config.routes.home}
-            className="font-medium leading-6 text-gray-900 hover:underline hover:decoration-gray-700/90"
+            className=" leading-6 text-black relative hover:opacity-70 "
           >
-            <span>Sign Up</span>
+            <span className="hover_bar_underline_black">Sign Up</span>
           </Link>
         </Popover.Group>
         <Popover.Group className="hidden lg:flex lg:items-center lg:justify-between lg:gap-x-6 lg:w-4/12">

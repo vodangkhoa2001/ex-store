@@ -3,23 +3,34 @@ import { SwiperSlide } from "swiper/react";
 import { Categories } from "~/data/CategoriesData";
 import { HeaderContainer } from "../Header";
 import SwiperNavButtons from "~/components/SwiperNavButtons";
-import { ContentContainer } from "../SwiperContent";
+import { ContentContainer } from "~/components/SwiperContent";
+import { useRef } from "react";
+import { Navigation } from "swiper";
 
 function CategoriesContainer() {
+  const slideCateRef = useRef();
+
+  const handlePrev = () => {
+    slideCateRef.current.swiper.slidePrev();
+  };
+  const handleNext = () => {
+    slideCateRef.current.swiper.slideNext();
+  };
   return (
     <>
       <HeaderContainer
         title="Browse By Category"
         className="flex justify-between"
       >
-        <SwiperNavButtons />
+        <SwiperNavButtons funcPrev={handlePrev} funcNext={handleNext} />
       </HeaderContainer>
 
       <ContentContainer
-        slidePrivew={6}
+        modules={[Navigation]}
+        slidesPerView={6}
         spaceBetween={50}
-        navigation
         className="mt-10 flex mb-[70px]"
+        ref={slideCateRef}
       >
         {Categories.map((cate) => {
           return (

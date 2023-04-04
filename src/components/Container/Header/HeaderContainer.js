@@ -1,4 +1,4 @@
-function HeaderContainer({ title, children, className }) {
+function HeaderComponent({ title, children, className }) {
   return (
     <>
       <div className={className}>
@@ -11,4 +11,4 @@ function HeaderContainer({ title, children, className }) {
   );
 }
 
-export default HeaderContainer;
+export default HeaderComponent;
