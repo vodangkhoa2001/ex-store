@@ -15,5 +15,8 @@ const images = {
   gucci_intense: require("~/assets/images/gucci_intense_oud.png"),
   clipart_transparent: require("~/assets/images/clipart-transparent.png"),
   woman_bg: require("~/assets/images/woman_background.png"),
+  qr_code: require("~/assets/images/QRcode.png"),
+  gg_play_download: require("~/assets/images/google_play.png"),
+  appstore_download: require("~/assets/images/appstore_download.png"),
 };
 export default images;

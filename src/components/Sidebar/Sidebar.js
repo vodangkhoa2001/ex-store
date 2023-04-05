@@ -65,11 +65,11 @@ function SideBar() {
         </ul>
       </div>
 
-      <div className="ml-7 flex-1 h-[372px] pt-7 relative">
+      <div className="ml-7 flex-1 h-[372px]  pt-7 relative">
         <img
           src={images.iphone_14_banner}
           alt=""
-          className=" absolute h-[352px] top-5 right-0 object-cover "
+          className=" absolute h-[352px]  w-[95%] top-5 right-0 left-[50px] object-cover "
         />
         <div className="flex items-center z-10 absolute w-[120px] text-gray-300 left-[120px] top-[290px]  hover:translate-x-1 ease-in duration-200 cursor-pointer">
           <button className="text-base font-medium hover_bar_underline_white">
