@@ -3,7 +3,7 @@ import { Footer } from "~/components/Footer";
 import Header from "~/components/Header";
 import SideBar from "~/components/Sidebar";
 
-function Home() {
+function DefaultLayout() {
   return (
     <div className="mx-auto">
       <div>
@@ -20,4 +20,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default DefaultLayout;

@@ -1,15 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
+import { Dialog, Popover } from "@headlessui/react";
+// Icon
 import { HiBars3 } from "react-icons/hi2";
 import { GrClose } from "react-icons/gr";
 import { BsCart3, BsHeart } from "react-icons/bs";
 import { TfiSearch } from "react-icons/tfi";
-import { Dialog, Popover } from "@headlessui/react";
 
 import config from "~/config";
+import MenuAccount from "./Menu";
+import { FaUserCircle } from "react-icons/fa";
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const currentAccount = false;
   return (
     <header className="bg-white border-b-[1px] border-solid border-gray-900/30  fixed z-50 left-0 right-0">
       <nav
@@ -17,9 +21,9 @@ function Header() {
         aria-label="Global"
       >
         <div className="flex lg:flex cursor-pointer ">
-          <Link to={config.routes.home} className="p-1.5">
+          <NavLink to={config.routes.home} className="p-1.5">
             <span className="text-4xl font-semibold">Ex</span>
-          </Link>
+          </NavLink>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -33,30 +37,30 @@ function Header() {
         </div>
 
         <Popover.Group className="hidden lg:flex lg:gap-x-12 font-semibold">
-          <Link
+          <NavLink
             to={config.routes.home}
             className=" leading-6 text-black relative hover:opacity-70"
           >
             <span className="hover_bar_underline_black">Home</span>
-          </Link>
-          <Link
-            to={config.routes.home}
+          </NavLink>
+          <NavLink
+            to={config.routes.contact}
             className=" leading-6 text-black relative hover:opacity-70 "
           >
             <span className="hover_bar_underline_black">Contact</span>
-          </Link>
-          <Link
-            to={config.routes.home}
+          </NavLink>
+          <NavLink
+            to={config.routes.about}
             className=" leading-6 text-black relative hover:opacity-70 "
           >
             <span className="hover_bar_underline_black">About</span>
-          </Link>
-          <Link
-            to={config.routes.home}
+          </NavLink>
+          <NavLink
+            to={config.routes.sign_up}
             className=" leading-6 text-black relative hover:opacity-70 "
           >
             <span className="hover_bar_underline_black">Sign Up</span>
-          </Link>
+          </NavLink>
         </Popover.Group>
         <Popover.Group className="hidden lg:flex lg:items-center lg:justify-between lg:gap-x-6 lg:w-4/12">
           <div className="flex flex-1 items-center bg-slate-400/10 rounded">
@@ -69,6 +73,11 @@ function Header() {
           </div>
           <BsHeart className="cursor-pointer w-10 h-11 p-2 hover:text-gray-900/30" />
           <BsCart3 className="cursor-pointer w-10 h-11 p-2 hover:text-gray-900/30" />
+          {!currentAccount ? (
+            <MenuAccount>
+              <FaUserCircle className="relative cursor-pointer w-10 h-11 p-2 hover:text-gray-900/30" />
+            </MenuAccount>
+          ) : null}
         </Popover.Group>
       </nav>
       <Dialog
