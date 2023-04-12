@@ -18,5 +18,9 @@ const images = {
   qr_code: require("~/assets/images/QRcode.png"),
   gg_play_download: require("~/assets/images/google_play.png"),
   appstore_download: require("~/assets/images/appstore_download.png"),
+  about_image: require("~/assets/images/about_image.png"),
+  emma: require("~/assets/images/emma.png"),
+  tom_cruise: require("~/assets/images/tom_cruise.png"),
+  will_smith: require("~/assets/images/will_smith.png"),
 };
 export default images;

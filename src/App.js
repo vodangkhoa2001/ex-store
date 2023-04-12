@@ -4,6 +4,7 @@ import { publicRoutes } from "~/routes";
 
 import "./App.css";
 import DefaultLayout from "~/layouts/DefaultLayout";
+import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs";
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
               path={route.path}
               element={
                 <Layout>
+                  <div className="mb-10">
+                    <Breadcrumbs />
+                  </div>
                   <Page />
                 </Layout>
               }

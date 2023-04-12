@@ -4,7 +4,7 @@ import config from "~/config";
 function SignUp() {
   return (
     <>
-      <div className=" w-[400px] mx-auto translate-y-[45%] ">
+      <div className=" w-[400px] mx-auto translate-y-[30%] overflow-hidden">
         <h2 className="text-4xl font-semibold mb-4">Create an account</h2>
         <h3 className="font-medium mb-10">Enter your details below</h3>
         <div className="flex flex-col">

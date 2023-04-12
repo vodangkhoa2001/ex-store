@@ -4,13 +4,14 @@ import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { useRef } from "react";
+import { Navigation } from "swiper";
+import Countdown, { zeroPad } from "react-countdown";
 
 import Products from "~/data/ProductData";
 import { HeaderContainer } from "../Header";
 import SwiperNavButtons from "~/components/SwiperNavButtons";
 import { ContentContainer } from "~/components/SwiperContent";
 import { FooterContainer } from "../Footer";
-import { Navigation } from "swiper";
 
 function ProductContainer() {
   const slideRef = useRef();
@@ -20,39 +21,45 @@ function ProductContainer() {
   const handleNext = () => {
     slideRef.current.swiper.slideNext();
   };
+  const renderer = ({ days, hours, minutes, seconds }) => {
+    return (
+      <div className="flex items-end justify-between ml-[70px]">
+        <div className="flex flex-col">
+          <span className="text-sm font-semibold">Days</span>
+          <span className="text-3xl font-semibold ">{zeroPad(days)}</span>
+        </div>
+        <span className="mx-3 font-bold font-poppins text-2xl text-[#DB4444]">
+          :
+        </span>
+        <div className="flex flex-col">
+          <span className="text-sm font-semibold">Hours</span>
+          <span className="text-3xl font-semibold">{zeroPad(hours)}</span>
+        </div>
+        <span className="mx-3 font-bold font-poppins text-2xl text-[#DB4444]">
+          :
+        </span>
+        <div className="flex flex-col">
+          <span className="text-sm font-semibold">Minutes</span>
+          <span className="text-3xl font-semibold">{zeroPad(minutes)}</span>
+        </div>
+        <span className="mx-3 font-bold font-poppins text-2xl text-[#DB4444]">
+          :
+        </span>
+        <div className="flex flex-col">
+          <span className="text-sm font-semibold">Seconds</span>
+          <span className="text-3xl font-semibold">{zeroPad(seconds)}</span>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
       <HeaderContainer
         title="Flash Sale"
         className="flex justify-start relative"
       >
-        <div className="flex items-end justify-between ml-[70px]">
-          <div className="flex flex-col">
-            <span className="text-sm font-semibold">Days</span>
-            <span className="text-3xl font-semibold ">03</span>
-          </div>
-          <span className="mx-3 font-bold font-poppins text-2xl text-[#DB4444]">
-            :
-          </span>
-          <div className="flex flex-col">
-            <span className="text-sm font-semibold">Hours</span>
-            <span className="text-3xl font-semibold">03</span>
-          </div>
-          <span className="mx-3 font-bold font-poppins text-2xl text-[#DB4444]">
-            :
-          </span>
-          <div className="flex flex-col">
-            <span className="text-sm font-semibold">Minutes</span>
-            <span className="text-3xl font-semibold">03</span>
-          </div>
-          <span className="mx-3 font-bold font-poppins text-2xl text-[#DB4444]">
-            :
-          </span>
-          <div className="flex flex-col">
-            <span className="text-sm font-semibold">Seconds</span>
-            <span className="text-3xl font-semibold">03</span>
-          </div>
-        </div>
+        <Countdown date={Date.now() + 86400000 * 3} renderer={renderer} />
         <div className="absolute right-0">
           <SwiperNavButtons funcPrev={handlePrev} funcNext={handleNext} />
         </div>

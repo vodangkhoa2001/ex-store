@@ -1,6 +1,7 @@
+import Countdown, { zeroPad } from "react-countdown";
+
 import { CategoriesContainer } from "./CategoriesContainer";
 import { ProductContainer } from "./ProductContainer";
-
 import Title from "~/components/Title";
 import { BestSelling } from "./BestSellingContainer";
 import { Banner } from "../Banner";
@@ -10,6 +11,37 @@ import { ServicesContainer } from "./ServicesContaner";
 // import { OurProducts } from "./OurProducts";
 
 function Container() {
+  const renderer = ({ days, hours, minutes, seconds }) => {
+    return (
+      <div className=" flex justify-between lg:mr-[40px] text-black">
+        <div className="time-discount">
+          <span className="font-semibold lg:text-3xl text-xl ">
+            {zeroPad(days)}
+          </span>
+          <span className="lg:text-[12px] text-[9px]">Days</span>
+        </div>
+        <div className="time-discount">
+          <span className="font-semibold lg:text-3xl text-xl">
+            {zeroPad(hours)}
+          </span>
+          <span className="lg:text-[12px] text-[9px]">Hours</span>
+        </div>
+        <div className="time-discount">
+          <span className="font-semibold lg:text-3xl text-xl">
+            {zeroPad(minutes)}
+          </span>
+          <span className="lg:text-[12px] text-[9px]">Minutes</span>
+        </div>
+        <div className="time-discount">
+          <span className="font-semibold lg:text-3xl text-xl">
+            {zeroPad(seconds)}
+          </span>
+          <span className="lg:text-[12px] text-[9px]">Seconds</span>
+        </div>
+      </div>
+    );
+  };
+  const milisecondOfDay = 86400000;
   return (
     <div className="max-w-7xl mx-auto">
       <div className="mt-[100px] divide-y ">
@@ -38,24 +70,10 @@ function Container() {
             <span className="top-[120px] text-white lg:text-5xl md:text-[4xl] text-[28px]">
               Enhance Your Music Experience
             </span>
-            <div className=" flex justify-between lg:mr-[40px] text-black">
-              <div className="time-discount">
-                <span className="font-semibold lg:text-3xl text-xl ">05</span>
-                <span className="lg:text-[12px] text-[9px]">Days</span>
-              </div>
-              <div className="time-discount">
-                <span className="font-semibold lg:text-3xl text-xl">23</span>
-                <span className="lg:text-[12px] text-[9px]">Hours</span>
-              </div>
-              <div className="time-discount">
-                <span className="font-semibold lg:text-3xl text-xl">59</span>
-                <span className="lg:text-[12px] text-[9px]">Minutes</span>
-              </div>
-              <div className="time-discount">
-                <span className="font-semibold lg:text-3xl text-xl">00</span>
-                <span className="lg:text-[12px] text-[9px]">Seconds</span>
-              </div>
-            </div>
+            <Countdown
+              date={Date.now() + milisecondOfDay * 5}
+              renderer={renderer}
+            />
             <button className="lg:w-[170px] w-[90px] lg:py-[20px] py-[10px] text-white rounded bg-[#00FF66] outline-none hover:bg-[#00FF66]/80">
               Buy Now!
             </button>
