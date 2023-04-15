@@ -38,7 +38,6 @@ function Header() {
 
         <Popover.Group className="hidden lg:flex lg:gap-x-12 font-semibold">
           <NavLink
-            sc
             to={config.routes.home}
             className=" leading-6 text-black relative hover:opacity-70"
           >

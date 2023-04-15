@@ -13,7 +13,7 @@ const links = [
   {
     icon: <FiUser />,
     label: "Manager My Account",
-    href: "/my-account",
+    href: config.routes.account,
   },
   {
     icon: <FiShoppingBag />,

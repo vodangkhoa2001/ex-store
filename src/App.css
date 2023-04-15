@@ -13,6 +13,12 @@
 }
 
 @layer components{
+label{
+  @apply text-black
+}
+input{
+  @apply focus-visible:outline-none
+}
   .btn-second-hover{
   @apply bg-secondary/80
   }

@@ -21,7 +21,7 @@ function Breadcrumbs() {
         </div>
       );
     });
-  return <div>{crumbs}</div>;
+  return <div className=" flex">{crumbs}</div>;
 }
 
 export default Breadcrumbs;
