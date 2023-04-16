@@ -6,6 +6,7 @@ import Login from "~/pages/Login";
 import Contact from "~/pages/Contact";
 import About from "~/pages/About";
 import Account from "~/pages/Account";
+import Cart from "~/pages/Cart";
 export const publicRoutes = [
   { path: config.routes.home, component: Home },
   { path: config.routes.sign_up, component: SignUp, layout: null },
@@ -13,4 +14,5 @@ export const publicRoutes = [
   { path: config.routes.about, component: About, layout: HeaderAndFooter },
   { path: config.routes.contact, component: Contact, layout: HeaderAndFooter },
   { path: config.routes.account, component: Account, layout: HeaderAndFooter },
+  { path: config.routes.cart, component: Cart, layout: HeaderAndFooter },
 ];

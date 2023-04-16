@@ -72,7 +72,9 @@ function Header() {
             <TfiSearch className=" w-10 h-11 px-2 rounded-tr rounded-br caret-gray-900/10  cursor-pointer text-gray-900/30 hover:text-gray-700 " />
           </div>
           <BsHeart className="cursor-pointer w-10 h-11 p-2 hover:text-gray-900/30" />
-          <BsCart3 className="cursor-pointer w-10 h-11 p-2 hover:text-gray-900/30" />
+          <Link to={config.routes.cart}>
+            <BsCart3 className="cursor-pointer w-10 h-11 p-2 hover:text-gray-900/30" />
+          </Link>
           {!currentAccount ? (
             <MenuAccount>
               <FaUserCircle className="relative cursor-pointer w-10 h-11 p-2 hover:text-gray-900/30" />

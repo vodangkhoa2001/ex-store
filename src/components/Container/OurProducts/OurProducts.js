@@ -9,7 +9,7 @@ import "swiper/css/grid";
 import { ContentContainer } from "~/components/SwiperContent";
 import SwiperNavButtons from "~/components/SwiperNavButtons";
 import { HeaderContainer } from "../Header";
-import Products from "~/data/ProductData";
+import { ProductData } from "~/data/ProductData";
 
 function OurProduct() {
   const slideOurProductRef = useRef();
@@ -37,7 +37,7 @@ function OurProduct() {
         ref={slideOurProductRef}
         className="flex"
       >
-        {Products.map((pro) => {
+        {ProductData.map((pro) => {
           return (
             <SwiperSlide key={pro.id}>
               <div className="max-w-[270px] h-[350px] hover:bg-black/5 cursor-pointer rounded">

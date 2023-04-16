@@ -7,7 +7,7 @@ import { useRef } from "react";
 import { Navigation } from "swiper";
 import Countdown, { zeroPad } from "react-countdown";
 
-import Products from "~/data/ProductData";
+import { ProductData } from "~/data/ProductData";
 import { HeaderContainer } from "../Header";
 import SwiperNavButtons from "~/components/SwiperNavButtons";
 import { ContentContainer } from "~/components/SwiperContent";
@@ -71,7 +71,7 @@ function ProductContainer() {
         className="mt-10 flex mb-[70px]"
         ref={slideRef}
       >
-        {Products.map((pro) => {
+        {ProductData.map((pro) => {
           return (
             !pro.discount || (
               <SwiperSlide key={pro.id}>

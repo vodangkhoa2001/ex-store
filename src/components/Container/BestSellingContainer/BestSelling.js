@@ -1,7 +1,7 @@
 import SwiperNavButtons from "~/components/SwiperNavButtons";
 import { HeaderContainer } from "../Header";
 import { ContentContainer } from "~/components/SwiperContent";
-import Products from "~/data/ProductData";
+import { ProductData } from "~/data/ProductData";
 import { SwiperSlide } from "swiper/react";
 import { AiOutlineHeart } from "react-icons/ai";
 import StarRatings from "react-star-ratings";
@@ -34,7 +34,7 @@ function BestSelling() {
         className="mt-10 flex mb-[70px] px-[60px]"
         ref={slideSellingRef}
       >
-        {Products.map((pro) => {
+        {ProductData.map((pro) => {
           return (
             pro.discount || (
               <SwiperSlide key={pro.id}>
