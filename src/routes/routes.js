@@ -7,6 +7,9 @@ import Contact from "~/pages/Contact";
 import About from "~/pages/About";
 import Account from "~/pages/Account";
 import Cart from "~/pages/Cart";
+import ProductDetail from "~/pages/ProductDetail";
+import CommingSoon from "~/pages/CommingSoon";
+
 export const publicRoutes = [
   { path: config.routes.home, component: Home },
   { path: config.routes.sign_up, component: SignUp, layout: null },
@@ -15,4 +18,14 @@ export const publicRoutes = [
   { path: config.routes.contact, component: Contact, layout: HeaderAndFooter },
   { path: config.routes.account, component: Account, layout: HeaderAndFooter },
   { path: config.routes.cart, component: Cart, layout: HeaderAndFooter },
+  {
+    path: config.routes.comming_soon,
+    component: CommingSoon,
+    layout: HeaderAndFooter,
+  },
+  {
+    path: config.routes.product_detail,
+    component: ProductDetail,
+    layout: HeaderAndFooter,
+  },
 ];

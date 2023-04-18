@@ -6,7 +6,7 @@ import { useRef } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/grid";
-import { ContentContainer } from "~/components/SwiperContent";
+import { SwiperContent } from "~/components/SwiperContent";
 import SwiperNavButtons from "~/components/SwiperNavButtons";
 import { HeaderContainer } from "../Header";
 import { ProductData } from "~/data/ProductData";
@@ -27,7 +27,7 @@ function OurProduct() {
       >
         <SwiperNavButtons funcNext={handleNext} funcPrev={handlePrev} />
       </HeaderContainer>
-      <ContentContainer
+      <SwiperContent
         modules={[Grid, Navigation]}
         grid={{
           rows: 2,
@@ -48,7 +48,7 @@ function OurProduct() {
                     </button>
                   </div>
                   <img
-                    src={pro.image}
+                    src={pro.images.at(0)}
                     alt=""
                     className="object-cover w-[70%]"
                   />
@@ -75,7 +75,7 @@ function OurProduct() {
             </SwiperSlide>
           );
         })}
-      </ContentContainer>
+      </SwiperContent>
     </>
   );
 }

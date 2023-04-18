@@ -1,1 +1,1 @@
-export { default as ContentContainer } from "./SwiperContent";
+export { default as SwiperContent } from "./SwiperContent";

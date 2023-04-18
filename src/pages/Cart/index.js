@@ -34,7 +34,7 @@ function Cart() {
                   <td>
                     <div className="flex justify-start items-center ml-10">
                       <img
-                        src={pro.image}
+                        src={pro.images.at(0)}
                         alt={pro.name}
                         className="w-[60px] mr-4"
                       />

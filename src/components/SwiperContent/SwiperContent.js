@@ -5,7 +5,9 @@ function Content(props, ref) {
   return (
     <>
       <div className={props.className}>
-        <Swiper {...props}>{props.children}</Swiper>
+        <Swiper {...props} ref={ref}>
+          {props.children}
+        </Swiper>
       </div>
     </>
   );

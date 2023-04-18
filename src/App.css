@@ -15,9 +15,26 @@
   body{
     @apply font-poppins
   }
+
+  html *::-webkit-scrollbar {
+      border-radius: 0;
+      width: 8px;
+  }
+  
+  html *::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background-color: rgba(22, 24, 35, 0.06);
+  }
+  
+  html *::-webkit-scrollbar-track {
+      border-radius: 0;
+      background-color: rgba(0, 0, 0, 0);
+  }
+  
 }
 
 @layer components{
+  
 label{
   @apply text-black
 }
@@ -42,5 +59,11 @@ input{
   
   .hover_bar_underline_black{
   @apply hover:after:w-full hover:after:h-[1px] hover:after:bg-black/70 hover:after:absolute hover:after:-bottom-1 hover:after:left-0
+  }
+  .active{
+    @apply after:w-full after:h-[1px] after:bg-black after:absolute after:-bottom-1 after:left-0
+  }
+  .inactive{
+    
   }
 }

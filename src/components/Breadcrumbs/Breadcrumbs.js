@@ -1,23 +1,20 @@
 import { Link, useLocation } from "react-router-dom";
 import config from "~/config";
-function Breadcrumbs() {
+function Breadcrumbs({ title }) {
   const location = useLocation();
-
-  let currentLink = "";
   const crumbs = location.pathname
     .split("/")
     .filter((crumb) => crumb !== "" && crumb !== "sign-up" && crumb !== "login")
     .map((crumb) => {
-      currentLink = +`/${crumb}`;
       return (
         <div key={crumb}>
-          <Link to={currentLink}>
+          <div>
             <div className="flex items-center">
-              <Link to={config.routes.home}>Home</Link>{" "}
+              <Link to={config.routes.home}>Home</Link>
               <p className="mx-3">/</p>
-              <p className="first-letter:uppercase font-semibold">{crumb}</p>
+              <p className="first-letter:uppercase font-semibold">{title}</p>
             </div>
-          </Link>
+          </div>
         </div>
       );
     });

@@ -1,6 +1,9 @@
 const images = {
   iphone_14_banner: require("~/assets/images/Iphone_14.png"),
   taycam: require("~/assets/images/taycam.png"),
+  havit_blue: require("~/assets/images/hv-g92-blue.png"),
+  havit_both: require("~/assets/images/HAVIT-HV-G92-both.png"),
+  havit_red: require("~/assets/images/hv-g92-red.png"),
   keyboard: require("~/assets/images/keyboard_ak-900.png"),
   gucci_bag: require("~/assets/images/Gucci_bag.png"),
   gucci_coat: require("~/assets/images/Light-The-North-Face-x-Gucci-coat.png"),

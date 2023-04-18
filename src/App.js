@@ -24,9 +24,6 @@ function App() {
               path={route.path}
               element={
                 <Layout>
-                  <div className="mb-10">
-                    <Breadcrumbs />
-                  </div>
                   <Page />
                 </Layout>
               }

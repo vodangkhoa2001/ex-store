@@ -3,7 +3,7 @@ import { SwiperSlide } from "swiper/react";
 import { Categories } from "~/data/CategoriesData";
 import { HeaderContainer } from "../Header";
 import SwiperNavButtons from "~/components/SwiperNavButtons";
-import { ContentContainer } from "~/components/SwiperContent";
+import { SwiperContent } from "~/components/SwiperContent";
 import { useRef } from "react";
 import { Navigation } from "swiper";
 
@@ -25,7 +25,7 @@ function CategoriesContainer() {
         <SwiperNavButtons funcPrev={handlePrev} funcNext={handleNext} />
       </HeaderContainer>
 
-      <ContentContainer
+      <SwiperContent
         modules={[Navigation]}
         slidesPerView={6}
         spaceBetween={50}
@@ -42,7 +42,7 @@ function CategoriesContainer() {
             </SwiperSlide>
           );
         })}
-      </ContentContainer>
+      </SwiperContent>
     </>
   );
 }

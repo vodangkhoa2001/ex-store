@@ -21,9 +21,9 @@ function Header() {
         aria-label="Global"
       >
         <div className="flex lg:flex cursor-pointer ">
-          <NavLink to={config.routes.home} className="p-1.5">
+          <Link to={config.routes.home} className="p-1.5">
             <span className="text-4xl font-semibold">Ex</span>
-          </NavLink>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -41,17 +41,20 @@ function Header() {
             to={config.routes.home}
             className=" leading-6 text-black relative hover:opacity-70"
           >
-            <span className="hover_bar_underline_black">Home</span>
+            Home
           </NavLink>
           <NavLink
             to={config.routes.contact}
-            className=" leading-6 text-black relative hover:opacity-70 "
+            className={`${({ isActive }) =>
+              isActive
+                ? "active"
+                : "inactive"} leading-6 text-black relative hover:opacity-70 focus-within:bar_underline_black`}
           >
             <span className="hover_bar_underline_black">Contact</span>
           </NavLink>
           <NavLink
             to={config.routes.about}
-            className=" leading-6 text-black relative hover:opacity-70 "
+            className=" leading-6 text-black relative hover:opacity-70 focus-within:bar_underline_black"
           >
             <span className="hover_bar_underline_black">About</span>
           </NavLink>
