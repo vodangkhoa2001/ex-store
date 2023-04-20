@@ -25,54 +25,52 @@ function Cart() {
             <th>Subtotal</th>
           </tr>
         </thead>
-        <tbody>
+
+        <tbody className="mt-[30px]">
           {CartData.map((pro) => {
             return (
-              <>
-                <div className="h-[30px]"></div>
-                <tr key={pro.id} className="shadow-lg shadow-gray-300 h-[80px]">
-                  <td>
-                    <div className="flex justify-start items-center ml-10">
-                      <img
-                        src={pro.images.at(0)}
-                        alt={pro.name}
-                        className="w-[60px] mr-4"
-                      />
-                      <span>{pro.namePro}</span>
+              <tr key={pro.id} className="shadow-lg shadow-gray-300 h-[80px]">
+                <td>
+                  <div className="flex justify-start items-center ml-10">
+                    <img
+                      src={pro.images.at(0)}
+                      alt={pro.name}
+                      className="w-[60px] mr-4"
+                    />
+                    <span>{pro.namePro}</span>
+                  </div>
+                </td>
+                <td>
+                  <p className="ml-[100px]">${pro.price}</p>
+                </td>
+                <td>
+                  <div className="inline-flex ml-[150px] border rounded-lg">
+                    <input
+                      type="number"
+                      value={pro.quantity}
+                      onChange={handleChangeQuantity}
+                      className=" w-10 text-center rounded-lg"
+                    />
+                    <div className="flex flex-col">
+                      <button
+                        onClick={handleIncrease}
+                        className="w-5 text-xl hover:bg-gray-100 hover:text-gray-500 rounded-tr-lg"
+                      >
+                        <FiChevronUp />
+                      </button>
+                      <button
+                        onClick={handleDecrease}
+                        className="w-5 text-xl hover:bg-gray-100 hover:text-gray-500 rounded-br-lg"
+                      >
+                        <FiChevronDown />
+                      </button>
                     </div>
-                  </td>
-                  <td>
-                    <p className="ml-[100px]">${pro.price}</p>
-                  </td>
-                  <td>
-                    <div className="inline-flex ml-[150px] border rounded-lg">
-                      <input
-                        type="number"
-                        value={pro.quantity}
-                        onChange={handleChangeQuantity}
-                        className=" w-10 text-center rounded-lg"
-                      />
-                      <div className="flex flex-col">
-                        <button
-                          onClick={handleIncrease}
-                          className="w-5 text-xl hover:bg-gray-100 hover:text-gray-500 rounded-tr-lg"
-                        >
-                          <FiChevronUp />
-                        </button>
-                        <button
-                          onClick={handleDecrease}
-                          className="w-5 text-xl hover:bg-gray-100 hover:text-gray-500 rounded-br-lg"
-                        >
-                          <FiChevronDown />
-                        </button>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p className="ml-[215px]">${pro.price * pro.quantity}</p>
-                  </td>
-                </tr>
-              </>
+                  </div>
+                </td>
+                <td>
+                  <p className="ml-[215px]">${pro.price * pro.quantity}</p>
+                </td>
+              </tr>
             );
           })}
         </tbody>
