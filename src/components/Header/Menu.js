@@ -1,4 +1,6 @@
 import { Menu, Transition } from "@headlessui/react";
+import { signOut } from "firebase/auth";
+import swal from "sweetalert";
 // icons
 import { FaRegTimesCircle } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
@@ -6,9 +8,19 @@ import { AiOutlineStar } from "react-icons/ai";
 import { FiShoppingBag, FiUser } from "react-icons/fi";
 // files
 import config from "~/config";
+import { auth } from "~/config/firebase";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
+const signOutUser = () => {
+  signOut(auth)
+    .then(() => {
+      popperSignOut();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 const links = [
   {
     icon: <FiUser />,
@@ -33,9 +45,26 @@ const links = [
   {
     icon: <CiLogout />,
     label: "Log out",
-    href: config.routes.login,
+    func: signOutUser,
   },
 ];
+
+// Popper alert sign out
+const popperSignOut = () => {
+  swal("Warning", `You want to sign out of Ex`, "warning", {
+    buttons: {
+      cancel: "No",
+      yes: {
+        text: "Yes",
+        value: true,
+      },
+    },
+  }).then((value) => {
+    if (value === true) {
+      window.location = config.routes.login;
+    }
+  });
+};
 
 function MenuAccount({ children }) {
   return (
@@ -52,13 +81,14 @@ function MenuAccount({ children }) {
         <Menu.Items className="absolute -right-3 z-10 mt-4 bg-white w-56 rounded outline-none shadow-lg">
           {links.map((link) => {
             return (
-              <Menu.Item key={link.href}>
+              <Menu.Item key={link.label}>
                 {({ active }) => (
                   <a
                     href={link.href}
+                    onClick={link.func}
                     className={classNames(
                       active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                      "flex items-center px-4 py-2 text-base rounded "
+                      "flex items-center px-4 py-2 text-base rounded cursor-pointer"
                     )}
                   >
                     <span className="mr-2 text-xl">{link.icon}</span>

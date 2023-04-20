@@ -4,9 +4,23 @@ import { publicRoutes } from "~/routes";
 
 import "./App.css";
 import DefaultLayout from "~/layouts/DefaultLayout";
-import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs";
+import { database } from "./config/firebase";
+import { child, get, ref } from "firebase/database";
 
 function App() {
+  // read database
+  const dbRef = ref(database);
+  get(child(dbRef, `users`))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
+      } else {
+        console.log("No data invalid");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   return (
     <Router>
       <Routes>

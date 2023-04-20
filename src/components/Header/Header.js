@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog, Popover } from "@headlessui/react";
 // Icon
 import { HiBars3 } from "react-icons/hi2";
@@ -10,10 +10,14 @@ import { TfiSearch } from "react-icons/tfi";
 import config from "~/config";
 import MenuAccount from "./Menu";
 import { FaUserCircle } from "react-icons/fa";
+import { auth } from "~/config/firebase";
 
 function Header() {
+  // Sign out user
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const currentAccount = false;
+  const currentAccount = auth.currentUser;
+  console.log(currentAccount);
   return (
     <header className="bg-white border-b-[1px] border-solid border-gray-900/30  fixed z-50 left-0 right-0">
       <nav
@@ -58,12 +62,14 @@ function Header() {
           >
             <span className="hover_bar_underline_black">About</span>
           </NavLink>
-          <NavLink
-            to={config.routes.sign_up}
-            className=" leading-6 text-black relative hover:opacity-70 "
-          >
-            <span className="hover_bar_underline_black">Sign Up</span>
-          </NavLink>
+          {currentAccount === null && (
+            <NavLink
+              to={config.routes.sign_up}
+              className=" leading-6 text-black relative hover:opacity-70 "
+            >
+              <span className="hover_bar_underline_black">Sign Up</span>
+            </NavLink>
+          )}
         </Popover.Group>
         <Popover.Group className="hidden lg:flex lg:items-center lg:justify-between lg:gap-x-6 lg:w-4/12">
           <div className="flex flex-1 items-center bg-slate-400/10 rounded">
@@ -78,7 +84,7 @@ function Header() {
           <Link to={config.routes.cart}>
             <BsCart3 className="cursor-pointer w-10 h-11 p-2 hover:text-gray-900/30" />
           </Link>
-          {!currentAccount ? (
+          {currentAccount !== null ? (
             <MenuAccount>
               <FaUserCircle className="relative cursor-pointer w-10 h-11 p-2 hover:text-gray-900/30" />
             </MenuAccount>
