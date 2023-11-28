@@ -1,5 +1,5 @@
-import { Link, NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { useState } from "react";
 import { Dialog, Popover } from "@headlessui/react";
 // Icon
 import { HiBars3 } from "react-icons/hi2";
@@ -14,19 +14,20 @@ import { auth } from "~/config/firebase";
 
 function Header() {
   // Sign out user
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const currentAccount = auth.currentUser;
-  console.log(currentAccount);
+  const location = useLocation();
+  const currentPage = location.pathname;
+
+  const isVisible = currentPage === "/account";
   return (
-    <header className="bg-white border-b-[1px] border-solid border-gray-900/30  fixed z-50 left-0 right-0">
+    <header className="bg-white h-9 lg:h-20 border-b-[1px] border-solid border-gray-900/30 fixed z-50 left-0 right-0 max-sm:top-[-5px]">
       <nav
-        className="flex items-center justify-between mx-auto py-3 max-w-7xl"
+        className="flex items-center justify-between lg:mx-auto lg:px-11 lg:py-3 w-screen"
         aria-label="Global"
       >
-        <div className="flex lg:flex cursor-pointer ">
+        <div className="flex cursor-pointer">
           <Link to={config.routes.home} className="p-1.5">
-            <span className="text-4xl font-semibold">Ex</span>
+            <span className="text-sm lg:text-4xl font-semibold">Ex</span>
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -62,7 +63,7 @@ function Header() {
           >
             <span className="hover_bar_underline_black">About</span>
           </NavLink>
-          {currentAccount === null && (
+          {auth.currentUser !== null ? null : (
             <NavLink
               to={config.routes.sign_up}
               className=" leading-6 text-black relative hover:opacity-70 "
@@ -84,11 +85,13 @@ function Header() {
           <Link to={config.routes.cart}>
             <BsCart3 className="cursor-pointer w-10 h-11 p-2 hover:text-gray-900/30" />
           </Link>
-          {currentAccount !== null ? (
-            <MenuAccount>
-              <FaUserCircle className="relative cursor-pointer w-10 h-11 p-2 hover:text-gray-900/30" />
-            </MenuAccount>
-          ) : null}
+          {auth.currentUser === null ? null : (
+            <div className="flex items-center">
+              <MenuAccount>
+                <FaUserCircle className="relative mt-2 cursor-pointer w-10 h-11 p-2 hover:text-gray-900/30" />
+              </MenuAccount>
+            </div>
+          )}
         </Popover.Group>
       </nav>
       <Dialog
@@ -100,7 +103,7 @@ function Header() {
         <div className="fixed inset-0 z-10">
           <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
-              <h4 className="text-5xl font-semibold">Ex</h4>
+              <h4 className="mt-4 text-5xl font-semibold">Ex</h4>
               <button
                 type="button"
                 className="-m-2.5 rounded-md p-2.5 text-gray-700"

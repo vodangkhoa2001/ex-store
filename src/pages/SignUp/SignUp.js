@@ -6,12 +6,11 @@ import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import * as Yup from "yup";
 import { useEffect } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 import config from "~/config";
-import { auth, database } from "~/config/firebase";
-import { ref, set } from "firebase/database";
-
+import { auth } from "~/config/firebase";
+import { addUser } from "~/api/userApi";
 // Configure FirebaseUI.
 const uiConfig = {
   // Popup signin flow rather than redirect flow.
@@ -21,27 +20,27 @@ const uiConfig = {
   signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
 };
 function SignUp() {
-  //create user to write database
-  const wirteUserData = (name, email, phone) => {
-    const db = database;
-    set(ref(db, "users/2"), {
-      id: 2,
-      name: name,
-      email: email,
-      phone: phone,
-    });
-  };
   // Sign up with Email and Password
   const signUp = async () => {
     const email = formik.values.email;
     const password = formik.values.password;
     try {
-      await createUserWithEmailAndPassword(auth, email, password).then(
-        (userCredential) => {
-          const user = userCredential.user;
-          console.log(user);
-        }
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
       );
+      await updateProfile(userCredential.user, {
+        displayName: formik.values.name,
+      });
+      // await new Promise((resolve) => setTimeout(resolve, 1000)).then(
+      //   (userCredential) => {
+      //     // Signed in
+      //     setCurrentUser(null);
+      //     const user = userCredential.user;
+      //     popperDone(user.email);
+      //   }
+      // );
     } catch (err) {
       console.log(err);
     }
@@ -60,7 +59,7 @@ function SignUp() {
 
         console.log("Logged in user: ", user.displayName);
         const token = await user.getIdToken();
-        console.log("Logged in user token: ", token);
+        console.log("GG Logged in user token: ", token);
       });
     return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
   }, []);
@@ -111,10 +110,11 @@ function SignUp() {
         ),
     }),
     onSubmit: (values) => {
-      wirteUserData(
+      addUser(
         formik.values.name,
         formik.values.email,
-        formik.values.phone
+        formik.values.phone,
+        formik.values.password
       );
       signUp();
       popperDone();

@@ -1,6 +1,7 @@
 import firebase from "firebase/compat/app";
 import { getAuth } from "firebase/auth";
-import { getDatabase } from "firebase/database";
+import { getFirestore } from "firebase/firestore";
+
 // Configure Firebase.
 const configFirebase = {
   apiKey: process.env.REACT_APP_FIREBASE_API,
@@ -13,5 +14,6 @@ const configFirebase = {
   measurementId: "G-CP60L5LBE8",
 };
 const app = firebase.initializeApp(configFirebase);
-export const database = getDatabase(app);
-export const auth = getAuth(app);
+const db = getFirestore(app);
+const auth = getAuth(app);
+export { db, auth };

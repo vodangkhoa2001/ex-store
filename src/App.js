@@ -1,51 +1,77 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { publicRoutes } from "~/routes";
+import { privateRoutes, publicRoutes } from "~/routes";
 
 import "./App.css";
 import DefaultLayout from "~/layouts/DefaultLayout";
-import { database } from "./config/firebase";
-import { child, get, ref } from "firebase/database";
+
+import { AuthProvider } from "~/context/userContext";
+import { auth } from "./config/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
-  // read database
-  const dbRef = ref(database);
-  get(child(dbRef, `users`))
-    .then((snapshot) => {
-      if (snapshot.exists()) {
-        console.log(snapshot.val());
+  const [currentUser, setCurrentUser] = useState(null);
+  useEffect(() => {
+    const unsubsribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("logged: ", user);
+        // User đang đăng nhập
+        setCurrentUser(user);
       } else {
-        console.log("No data invalid");
+        // Không có người dùng đăng nhập
+        console.log("none user: ", user);
+        setCurrentUser(null);
       }
-    })
-    .catch((error) => {
-      console.error(error);
     });
+    return () => unsubsribe();
+  }, []);
+  let Layout = DefaultLayout;
   return (
-    <Router>
-      <Routes>
-        {publicRoutes.map((route, index) => {
-          let Layout = DefaultLayout;
-          const Page = route.component;
-          if (route.layout) {
-            Layout = route.layout;
-          } else if (route.layout === null) {
-            Layout = Fragment;
-          }
-          return (
-            <Route
-              key={index}
-              path={route.path}
-              element={
-                <Layout>
-                  <Page />
-                </Layout>
-              }
-            />
-          );
-        })}
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          {currentUser
+            ? privateRoutes.map((route, index) => {
+                const Page = route.component;
+                if (route.layout) {
+                  Layout = route.layout;
+                } else if (route.layout === null) {
+                  Layout = Fragment;
+                }
+                return (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    element={
+                      <Layout>
+                        <Page />
+                      </Layout>
+                    }
+                  />
+                );
+              })
+            : publicRoutes.map((route, index) => {
+                const Page = route.component;
+                if (route.layout) {
+                  Layout = route.layout;
+                } else if (route.layout === null) {
+                  Layout = Fragment;
+                }
+                return (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    element={
+                      <Layout>
+                        <Page />
+                      </Layout>
+                    }
+                  />
+                );
+              })}
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 

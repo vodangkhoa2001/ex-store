@@ -7,6 +7,8 @@ import swal from "sweetalert";
 import config from "~/config";
 import { auth } from "~/config/firebase";
 
+import { getUserLogin } from "~/api/userApi";
+
 function Login() {
   // Login with Email and password
   const signIn = async () => {
@@ -20,6 +22,7 @@ function Login() {
           popperDone(user.email);
         }
       );
+      console.log("login complet:", auth.currentUser.email);
     } catch (error) {
       console.log(error);
     }
@@ -54,13 +57,12 @@ function Login() {
           "Password must be 8-15 characters and container least one letter, one uppercase letter, one number and a speacial character"
         ),
     }),
-    onSubmit: (value) => {
+    onSubmit: async (value) => {
+      getUserLogin();
       signIn();
-      console.log(value);
+      console.log("login: ", value);
     },
   });
-  // Handle firebase auth change
-  console.log("Current User", auth?.currentUser);
   return (
     <>
       <div className=" w-[400px] mx-auto translate-y-[45%] ">

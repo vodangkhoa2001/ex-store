@@ -21,15 +21,16 @@ function BestSelling() {
         className="flex justify-between"
       >
         <SwiperNavButtons button>
-          <button className="px-6 py-3 text-white bg-secondary rounded font-medium hover:btn-second-hover">
+          <button className="hidden lg:inline-block px-6 py-3 text-white bg-secondary rounded font-medium hover:btn-second-hover">
             View All
           </button>
         </SwiperNavButtons>
       </HeaderContainer>
+      {/* Desktop view */}
       <SwiperContent
         spaceBetween={50}
         slidesPerView={4}
-        className="mt-10 flex mb-[70px] px-[60px]"
+        className="mt-10 hidden lg:flex mb-[70px] px-[60px]"
         ref={slideSellingRef}
       >
         {ProductData.map((pro) => {
@@ -42,7 +43,24 @@ function BestSelling() {
           );
         })}
       </SwiperContent>
-      <div className="absolute w-full top-[50%]">
+      {/* Mobile view */}
+      <SwiperContent
+        spaceBetween={10}
+        slidesPerView={2}
+        className="mt-10 lg:hidden flex mb-[70px] px-1"
+        ref={slideSellingRef}
+      >
+        {ProductData.map((pro) => {
+          return (
+            pro.discount || (
+              <SwiperSlide key={pro.id}>
+                <SingleProduct pro={pro} />
+              </SwiperSlide>
+            )
+          );
+        })}
+      </SwiperContent>
+      <div className="hidden lg:inline-block absolute w-full top-[50%]">
         <SwiperNavButtons funcPrev={handlePrev} funcNext={handleNext} />
       </div>
     </div>

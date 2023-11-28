@@ -22,7 +22,7 @@ function ProductContainer() {
   };
   const renderer = ({ days, hours, minutes, seconds }) => {
     return (
-      <div className="flex items-end justify-between ml-[70px]">
+      <div className="flex items-end justify-between lg:ml-[70px] mr-2">
         <div className="flex flex-col">
           <span className="text-sm font-semibold">Days</span>
           <span className="text-3xl font-semibold ">{zeroPad(days)}</span>
@@ -56,18 +56,37 @@ function ProductContainer() {
     <>
       <HeaderContainer
         title="Flash Sale"
-        className="flex justify-start relative"
+        className="text-sm flex justify-start relative"
       >
         <Countdown date={Date.now() + 86400000 * 3} renderer={renderer} />
-        <div className="absolute right-0">
+        <div className="absolute right-0 hidden lg:inline-block">
           <SwiperNavButtons funcPrev={handlePrev} funcNext={handleNext} />
         </div>
       </HeaderContainer>
+      {/* Desktop view */}
       <SwiperContent
         modules={[Navigation]}
         spaceBetween={10}
         slidesPerView={4}
-        className="mt-10 flex mb-[70px]"
+        className="mt-10 hidden lg:flex mb-[70px]"
+        ref={slideRef}
+      >
+        {ProductData.map((pro) => {
+          return (
+            !pro.discount || (
+              <SwiperSlide key={pro.id}>
+                <SingleProduct pro={pro} />
+              </SwiperSlide>
+            )
+          );
+        })}
+      </SwiperContent>
+      {/* Moblie view */}
+      <SwiperContent
+        modules={[Navigation]}
+        spaceBetween={5}
+        slidesPerView={2}
+        className="mt-10 lg:hidden mb-[70px]"
         ref={slideRef}
       >
         {ProductData.map((pro) => {

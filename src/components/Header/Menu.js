@@ -61,6 +61,7 @@ const popperSignOut = () => {
     },
   }).then((value) => {
     if (value === true) {
+      localStorage.removeItem("accessToken");
       window.location = config.routes.login;
     }
   });

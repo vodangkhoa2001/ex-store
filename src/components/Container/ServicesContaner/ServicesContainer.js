@@ -4,7 +4,7 @@ import { SiAdguard } from "react-icons/si";
 
 function ServicesContainer() {
   return (
-    <div className="flex my-[100px] justify-center text-center">
+    <div className="flex my-[100px] lg:justify-center max-sm:flex-col text-center">
       <div>
         <div className="bg-black flex items-center rounded-[50%] w-[50px] h-[50px] mx-auto mb-2">
           <TbTruckDelivery className="mx-auto w-6 text-3xl text-white" />
@@ -12,7 +12,7 @@ function ServicesContainer() {
         <h3 className="font-semibold">FREE AND FAST DELIVERY</h3>
         <span>Free delivery for all orders over $140</span>
       </div>
-      <div className="mx-[88px]">
+      <div className="mx-[88px] max-sm:my-11">
         <div className="bg-black flex items-center rounded-[50%] w-[50px] h-[50px] mx-auto mb-2">
           <TfiHeadphoneAlt className="mx-auto w-6 text-3xl text-white" />
         </div>

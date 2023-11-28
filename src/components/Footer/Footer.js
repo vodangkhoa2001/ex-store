@@ -4,10 +4,10 @@ import images from "~/assets/images";
 import config from "~/config";
 function Footer() {
   return (
-    <div className="bg-black lg:h-[440px] text-white">
-      <div className="max-w-7xl mx-auto pt-[80px] flex items-start justify-between">
+    <div className="bg-black lg:h-[440px] h-full pb-[114px] text-white max-sm:text-center">
+      <div className="lg:max-w-7xl max-sm:w-screen mx-auto pt-[80px] flex lg:items-start justify-between max-sm:flex-col max-sm:items-center">
         <div className="">
-          <h3 className="text-4xl font-semibold mb-6">Ex</h3>
+          <h3 className="text-4xl font-semibold lg:mb-6 max-sm:mb-10">Ex</h3>
           <a href={config.routes.home} className="text-xl mb-6 block">
             Subscribe
           </a>
@@ -22,16 +22,16 @@ function Footer() {
             </button>
           </div>
         </div>
-        <div className="w-[20%]">
-          <h3 className="text-2xl font-semibold mb-6">Support</h3>
+        <div className="lg:w-[20%] max-sm:w-[90%] max-sm:my-8">
+          <h3 className="text-2xl font-semibold lg:mb-6 mb-4">Support</h3>
           <p className="text-base mb-6">
             111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.
           </p>
           <p className="text-base mb-6">exclusive@gmail.com</p>
           <p>+88015-88888-9999</p>
         </div>
-        <div className="">
-          <h3 className="text-2xl font-semibold mb-6">Account</h3>
+        <div className="max-sm:my-8">
+          <h3 className="text-2xl font-semibold lg:mb-6 mb-4">Account</h3>
           <div className="flex flex-col">
             <a href={config.routes.home} className="text-base mb-6">
               My Account

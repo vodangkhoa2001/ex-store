@@ -10,14 +10,32 @@ import Cart from "~/pages/Cart";
 import ProductDetail from "~/pages/ProductDetail";
 import CommingSoon from "~/pages/CommingSoon";
 
+export const privateRoutes = [
+  { path: config.routes.home, component: Home },
+  { path: config.routes.account, component: Account, layout: HeaderAndFooter },
+  { path: config.routes.cart, component: Cart, layout: HeaderAndFooter },
+  { path: config.routes.about, component: About, layout: HeaderAndFooter },
+  { path: config.routes.contact, component: Contact, layout: HeaderAndFooter },
+  { path: config.routes.login, component: Login, layout: null },
+
+  {
+    path: config.routes.comming_soon,
+    component: CommingSoon,
+    layout: HeaderAndFooter,
+  },
+  {
+    path: config.routes.product_detail,
+    component: ProductDetail,
+    layout: HeaderAndFooter,
+  },
+];
 export const publicRoutes = [
   { path: config.routes.home, component: Home },
   { path: config.routes.sign_up, component: SignUp, layout: null },
   { path: config.routes.login, component: Login, layout: null },
   { path: config.routes.about, component: About, layout: HeaderAndFooter },
   { path: config.routes.contact, component: Contact, layout: HeaderAndFooter },
-  { path: config.routes.account, component: Account, layout: HeaderAndFooter },
-  { path: config.routes.cart, component: Cart, layout: HeaderAndFooter },
+
   {
     path: config.routes.comming_soon,
     component: CommingSoon,

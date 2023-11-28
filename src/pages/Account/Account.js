@@ -1,11 +1,13 @@
 import { Tab } from "@headlessui/react";
 import MyProfile from "~/components/Account/MyProfile";
-
+import SideBar from "~/components/Account/Sidebar";
+import { auth } from "~/config/firebase";
 function Account() {
   return (
     <div className="relative">
       <h2 className="absolute -top-[60px] right-0">
-        Hello, <span className="text-secondary">Khoa</span>
+        Hello,{" "}
+        <span className="text-secondary">{auth.currentUser.displayName}</span>
       </h2>
       <div>
         <div>
@@ -15,62 +17,7 @@ function Account() {
             className="flex justify-between my-4"
           >
             <div>
-              <Tab.List className="leading-9">
-                <h3 className="text-lg font-semibold">Manager My Account</h3>
-                <Tab className="block focus-visible:outline-none ml-8">
-                  {({ selected }) => (
-                    /* Use the `selected` state to conditionally style the selected tab. */
-                    <p
-                      className={selected ? "text-secondary" : "text-gray-500"}
-                    >
-                      My Profile
-                    </p>
-                  )}
-                </Tab>
-                <Tab className="block focus-visible:outline-none ml-8">
-                  {({ selected }) => (
-                    /* Use the `selected` state to conditionally style the selected tab. */
-                    <p
-                      className={selected ? "text-secondary" : "text-gray-500"}
-                    >
-                      Address Book
-                    </p>
-                  )}
-                </Tab>
-                <Tab className="focus-visible:outline-none ml-8">
-                  {({ selected }) => (
-                    /* Use the `selected` state to conditionally style the selected tab. */
-                    <p
-                      className={selected ? "text-secondary" : "text-gray-500"}
-                    >
-                      My Payment Options
-                    </p>
-                  )}
-                </Tab>
-              </Tab.List>
-              <Tab.List className="leading-9">
-                <h3 className="text-lg font-semibold">My Order</h3>
-                <Tab className="block focus-visible:outline-none ml-8">
-                  {({ selected }) => (
-                    /* Use the `selected` state to conditionally style the selected tab. */
-                    <p
-                      className={selected ? "text-secondary" : "text-gray-500"}
-                    >
-                      My Return
-                    </p>
-                  )}
-                </Tab>
-                <Tab className="block focus-visible:outline-none ml-8">
-                  {({ selected }) => (
-                    /* Use the `selected` state to conditionally style the selected tab. */
-                    <p
-                      className={selected ? "text-secondary" : "text-gray-500"}
-                    >
-                      My Cancellation
-                    </p>
-                  )}
-                </Tab>
-              </Tab.List>
+              <SideBar />
             </div>
             <Tab.Panels className="w-[75%]">
               <Tab.Panel>
