@@ -25,6 +25,14 @@ function App() {
     });
     return () => unsubsribe();
   }, []);
+
+  function ScrollToTopOnMount() {
+    useEffect(() => {
+      window.scroll(0, 0);
+    }, []);
+    return null;
+  }
+
   let Layout = DefaultLayout;
   return (
     <AuthProvider>
@@ -44,6 +52,7 @@ function App() {
                     path={route.path}
                     element={
                       <Layout>
+                        <ScrollToTopOnMount />
                         <Page />
                       </Layout>
                     }
@@ -63,6 +72,8 @@ function App() {
                     path={route.path}
                     element={
                       <Layout>
+                        <ScrollToTopOnMount />
+
                         <Page />
                       </Layout>
                     }

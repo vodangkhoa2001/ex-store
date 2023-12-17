@@ -20,14 +20,14 @@ function Header() {
 
   const isVisible = currentPage === "/account";
   return (
-    <header className="bg-white h-9 lg:h-20 border-b-[1px] border-solid border-gray-900/30 fixed z-50 left-0 right-0 max-sm:top-[-5px]">
+    <header className="bg-white max-sm:h-[44px] lg:h-20 border-b-[1px] border-solid border-gray-900/30 fixed z-50 left-0 right-0 max-sm:top-[-5px]">
       <nav
         className="flex items-center justify-between lg:mx-auto lg:px-11 lg:py-3 w-screen"
         aria-label="Global"
       >
         <div className="flex cursor-pointer">
-          <Link to={config.routes.home} className="p-1.5">
-            <span className="text-sm lg:text-4xl font-semibold">Ex</span>
+          <Link to={config.routes.home} className="p-2">
+            <span className="text-2xl lg:text-4xl font-semibold">Ex</span>
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -37,7 +37,7 @@ function Header() {
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
-            <HiBars3 className="w-6 h-6" aria-hidden="true" />
+            <HiBars3 className="w-6 h-6 max-sm:mr-2" aria-hidden="true" />
           </button>
         </div>
 

@@ -38,7 +38,12 @@ const Products = [
     size_value: [],
     colors: ["bg-black", "bg-white"],
     buoght: 509,
-    images: [images.keyboard],
+    images: [
+      images.keyboard,
+      images.keyboard,
+      images.keyboard,
+      images.keyboard,
+    ],
     category: ["gaming", "computer"],
     description:
       "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
@@ -56,7 +61,12 @@ const Products = [
     size_value: [],
     colors: [],
     buoght: 700,
-    images: [images.gucci_coat],
+    images: [
+      images.gucci_coat,
+      images.gucci_coat,
+      images.gucci_coat,
+      images.gucci_coat,
+    ],
     category: ["fashion", "jacket"],
     description:
       "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
@@ -74,7 +84,12 @@ const Products = [
     size_value: [],
     colors: [],
     buoght: 200,
-    images: [images.s_series_chair],
+    images: [
+      images.s_series_chair,
+      images.s_series_chair,
+      images.s_series_chair,
+      images.s_series_chair,
+    ],
     category: ["houseware"],
     description:
       "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
@@ -92,7 +107,12 @@ const Products = [
     size_value: [],
     colors: [],
     buoght: 78,
-    images: [images.small_bookself],
+    images: [
+      images.small_bookself,
+      images.small_bookself,
+      images.small_bookself,
+      images.small_bookself,
+    ],
     category: ["houseware"],
     description:
       "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
@@ -110,7 +130,12 @@ const Products = [
     size_value: [],
     colors: [],
     buoght: 132,
-    images: [images.gucci_bag],
+    images: [
+      images.gucci_bag,
+      images.gucci_bag,
+      images.gucci_bag,
+      images.gucci_bag,
+    ],
     category: ["fashion"],
     description:
       "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
@@ -128,7 +153,12 @@ const Products = [
     size_value: [],
     colors: ["bg-black", "bg-white"],
     buoght: 99,
-    images: [images.rgb_cooler],
+    images: [
+      images.rgb_cooler,
+      images.rgb_cooler,
+      images.rgb_cooler,
+      images.rgb_cooler,
+    ],
     category: ["gaming"],
     description:
       "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
@@ -146,7 +176,7 @@ const Products = [
     size_value: [],
     colors: ["bg-black", "bg-white"],
     buoght: 79,
-    images: [images.monitor],
+    images: [images.monitor, images.monitor, images.monitor, images.monitor],
     category: ["gaming"],
     description:
       "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
@@ -164,7 +194,12 @@ const Products = [
     size_value: [39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49],
     colors: ["bg-black", "bg-white"],
     buoght: 79,
-    images: [images.nike_cr7],
+    images: [
+      images.nike_cr7,
+      images.nike_cr7,
+      images.nike_cr7,
+      images.nike_cr7,
+    ],
     category: ["sport"],
     description:
       "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive. PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive. PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive. PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive. PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive. PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive. PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive. PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive. PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive. PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive",
@@ -182,7 +217,12 @@ const Products = [
     size_value: [],
     colors: ["white"],
     buoght: 280,
-    images: [images.ball_primer_league],
+    images: [
+      images.ball_primer_league,
+      images.ball_primer_league,
+      images.ball_primer_league,
+      images.ball_primer_league,
+    ],
     category: ["sport"],
     description:
       "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",

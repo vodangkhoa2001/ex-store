@@ -45,7 +45,7 @@ function BestSelling() {
       </SwiperContent>
       {/* Mobile view */}
       <SwiperContent
-        spaceBetween={10}
+        spaceBetween={8}
         slidesPerView={2}
         className="mt-10 lg:hidden flex mb-[70px] px-1"
         ref={slideSellingRef}

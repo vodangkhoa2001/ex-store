@@ -6,7 +6,7 @@ function ProductDetailPage() {
   const { state: pro } = useLocation();
   return (
     <>
-      <div className="mb-10">
+      <div className="mb-10 max-sm:mt-[-90px]">
         <Breadcrumbs title={pro.namePro} />
       </div>
       <ProductDetail />

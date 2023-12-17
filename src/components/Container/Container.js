@@ -63,7 +63,7 @@ function Container() {
           image={images.banner_jbc}
           className="w-full mt-[100px] object-cover"
         >
-          <div className="w-[39%] absolute lg:top-[60px] lg:bottom-[60px] md:top-[35px] md:bottom-[35px] top-[10px]  bottom-[20px] flex flex-col justify-between lg:pl-[60px] sm:pl-[30px]">
+          <div className="w-[39%] max-sm:ml-2 absolute lg:top-[60px] lg:bottom-[60px] md:top-[35px] md:bottom-[35px] top-[10px]  bottom-[20px] flex flex-col justify-between lg:pl-[60px] sm:pl-[30px]">
             <h2 className="lg:top-[60px] text-[#00FF66] font-semibold">
               Categories
             </h2>

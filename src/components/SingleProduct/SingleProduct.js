@@ -6,7 +6,7 @@ import config from "~/config";
 function SingleProduct({ pro }) {
   return (
     <Link to={config.routes.product_detail} state={pro}>
-      <div className="lg:max-w-[270px] lg:h-[350px] h-[350px] hover:bg-black/5 cursor-pointer rounded">
+      <div className="lg:max-w-[270px] h-[350px] hover:bg-black/5 cursor-pointer rounded">
         <div className="h-[250px] relative flex items-center justify-center rounded bg-gray-900/10">
           <div className="absolute top-2 flex justify-between left-3 right-3">
             <span className="bg-secondary py-1 px-3 rounded text-white my-auto">
@@ -32,10 +32,12 @@ function SingleProduct({ pro }) {
             <StarRatings
               rating={pro.rating}
               numberOfStars={5}
-              starDimension="12px"
+              starDimension="10px"
               starRatedColor="#FFAD33"
             />
-            <span className="ml-3">({pro.numRate})</span>
+            <span className="max-sm:absolute max-sm:right-2 ml-3 ">
+              ({pro.numRate})
+            </span>
           </div>
         </div>
       </div>
