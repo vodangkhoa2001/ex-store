@@ -52,7 +52,7 @@ function CategoriesContainer() {
         modules={[Navigation]}
         slidesPerView={2}
         spaceBetween={20}
-        className="mt-10 flex mb-[70px] lg:hidden"
+        className="mt-10 flex mb-[70px] lg:hidden max-sm:ml-2"
         ref={slideCateRef}
       >
         {Categories.map((cate) => {

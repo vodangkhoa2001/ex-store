@@ -1,7 +1,12 @@
 import { Tab } from "@headlessui/react";
 import { Link, useLocation } from "react-router-dom";
 import StarRatings from "react-star-ratings";
-import { AiOutlineHeart, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import {
+  AiFillHeart,
+  AiOutlineHeart,
+  AiOutlineMinus,
+  AiOutlinePlus,
+} from "react-icons/ai";
 import { useRef, useState } from "react";
 import { TbTruckDelivery } from "react-icons/tb";
 import { MdLoop } from "react-icons/md";
@@ -30,6 +35,7 @@ function ProductDetail() {
     size,
     numRate,
     rating,
+    like,
   } = pro;
 
   const [quantity, setQuantity] = useState(1);
@@ -48,14 +54,18 @@ function ProductDetail() {
   const handleNext = () => {
     slideDetailRef.current.swiper.slideNext();
   };
+  const [liked, setLiked] = useState(like);
+  const handleLike = () => {
+    setLiked(!liked);
+  };
   return (
     <>
+      {/* Desktop view */}
       <Tab.Group
         as="div"
-        className="max-sm:flex max-sm:flex-col lg:grid lg:grid-cols-6 lg:grid-rows-4 gap-4 h-[750px]"
+        className="max-sm:hidden max-sm:flex-col lg:grid lg:grid-cols-6 lg:grid-rows-4 gap-4 h-[750px]"
       >
-        {/* Desktop view */}
-        <div className="hidden lg:flex lg:col-span-1 lg:row-span-4 lg:flex-col lg:justify-between max-sm:overflow-x-scroll lg:overflow-y-scroll">
+        <div className="lg:flex lg:col-span-1 lg:row-span-4 lg:flex-col lg:justify-between max-sm:overflow-x-scroll lg:overflow-y-scroll">
           {images.map((image, index) => {
             return (
               <Tab.List key={index} as="div" className="lg:w-[190px]">
@@ -102,8 +112,9 @@ function ProductDetail() {
             );
           })}
         </Tab.Panels>
-
-        {/* Mobile view */}
+      </Tab.Group>
+      {/* Mobile view */}
+      <Tab.Group>
         <div className="max-sm:flex max-sm:flex-col-reverse lg:hidden">
           <div className="flex overflow-x-scroll">
             {images.map((image, index) => {
@@ -111,7 +122,7 @@ function ProductDetail() {
                 <Tab.List key={index} as="div" className="w-[190px]">
                   <Tab
                     as="div"
-                    className="max-sm:mx-1 max-sm:w-[140px] rounded mb-4 border border-gray-300 focus-visible:outline-none"
+                    className="max-sm:mx-1 max-sm:w-[140px] rounded mb-4 border border-gray-300 focus-visible:outline-none bg-white"
                   >
                     {({ selected }) => (
                       /* Use the `selected` state to conditionally style the selected tab. */
@@ -135,7 +146,7 @@ function ProductDetail() {
             })}
           </div>
 
-          <Tab.Panels as="div" className="border border-gray-300 rounded">
+          <Tab.Panels as="div" className="bg-white">
             {images.map((image, index) => {
               return (
                 <Tab.Panel
@@ -143,117 +154,128 @@ function ProductDetail() {
                   as="div"
                   className="flex justify-center items-center w-full h-full"
                 >
-                  <img src={image} alt="" className="w-[250px] object-cover" />
+                  <img
+                    src={image}
+                    alt="anh to"
+                    className="w-[250px] h-[200px] object-cover"
+                  />
                 </Tab.Panel>
               );
             })}
           </Tab.Panels>
         </div>
-        <div className="mx-4 lg:col-span-2 lg:h-[750px] divide-y-2 overflow-y-scroll">
-          {/* Info  Product */}
-          <div className="mb-5">
-            <h2 className="lg:text-3xl text-lg font-semibold">{namePro}</h2>
-            <div className="flex divide-x-2 my-2">
-              <div className="mr-4">
-                <StarRatings
-                  rating={rating}
-                  numberOfStars={5}
-                  starDimension="12px"
-                  starRatedColor="#FFAD33"
-                />
-                <span className="lg:ml-3 ml-2 max-sm:text-sm">
-                  ({numRate} Reviews){" "}
-                </span>
-              </div>
-              <span className="text-green-500 pl-4">In Stock</span>
+      </Tab.Group>
+      <div className="mx-4 lg:col-span-2 lg:h-[750px] divide-y-2 overflow-y-scroll">
+        {/* Info  Product */}
+        <div className="mb-5">
+          <h2 className="lg:text-3xl text-lg font-semibold">{namePro}</h2>
+          <div className="flex divide-x-2 my-2">
+            <div className="mr-4">
+              <StarRatings
+                rating={rating}
+                numberOfStars={5}
+                starDimension="12px"
+                starRatedColor="#FFAD33"
+              />
+              <span className="lg:ml-3 ml-2 max-sm:text-sm">
+                ({numRate} Reviews){" "}
+              </span>
             </div>
-            <span className="text-3xl">${price}</span>
-            <p className="mt-5">{description}</p>
+            <span className="text-green-500 pl-4">In Stock</span>
           </div>
+          <span className="text-3xl">${price}</span>
+          <p className="mt-5">{description}</p>
+        </div>
 
-          <div className="pt-5">
-            {/* Color */}
-            <div className="flex ">
-              <span className="text-xl font-semibold mr-4">Color:</span>
-              <ColorOption colors={colors} className="mb-5" />
+        <div className="pt-5">
+          {/* Color */}
+          <div className="flex ">
+            <span className="text-xl font-semibold mr-4">Color:</span>
+            <ColorOption colors={colors} className="mb-5" />
+          </div>
+          {/* Size */}
+          {size && (
+            <div className="flex">
+              <span className="text-xl font-semibold mr-4">Size:</span>
+              <SizeOption sizes={size_value} />
             </div>
-            {/* Size */}
-            {size && (
-              <div className="flex">
-                <span className="text-xl font-semibold mr-4">Size:</span>
-                <SizeOption sizes={size_value} />
-              </div>
-            )}
-            {/* Quantity & Buy Now button & Like  */}
-            <div className="h-11 flex items-center justify-between">
-              {/* Quantity */}
-              <div className="h-full flex items-center">
-                <button
-                  onClick={handleDecrease}
-                  className="  border border-gray-300 h-full px-3 rounded-tl rounded-bl focus-within:bg-secondary focus-within:text-white"
-                >
-                  <AiOutlineMinus />
-                </button>
-                <input
-                  type="number"
-                  value={quantity}
-                  readOnly
-                  className="h-full m-0 bg-white border border-gray-400 w-[70px] text-center font-semibold"
-                />
-                <button
-                  onClick={handleIncrease}
-                  className="  border border-gray-300 h-full px-3 rounded-tr rounded-br focus-within:bg-secondary focus-within:text-white"
-                >
-                  <AiOutlinePlus />
-                </button>
-              </div>
-              {/* Button Buy  Now */}
-              <div className="h-full">
-                <button className="h-full px-8 bg-secondary text-white rounded  hover:btn-second-hover">
-                  Buy Now
-                </button>
-              </div>
-              {/* Like */}
-              <div className="h-full">
-                <button className="h-full px-2 border border-gray-300 rounded hover:bg-gray-100">
+          )}
+          {/* Quantity & Buy Now button & Like  */}
+          <div className="h-11 flex items-center justify-between">
+            {/* Quantity */}
+            <div className="h-full flex items-center">
+              <button
+                onClick={handleDecrease}
+                className="  border border-gray-300 h-full px-3 rounded-tl rounded-bl focus-within:bg-secondary focus-within:text-white"
+              >
+                <AiOutlineMinus />
+              </button>
+              <input
+                type="number"
+                value={quantity}
+                readOnly
+                className="h-full m-0 bg-white border border-gray-400 w-[70px] text-center font-semibold"
+              />
+              <button
+                onClick={handleIncrease}
+                className="  border border-gray-300 h-full px-3 rounded-tr rounded-br focus-within:bg-secondary focus-within:text-white"
+              >
+                <AiOutlinePlus />
+              </button>
+            </div>
+            {/* Button Buy  Now */}
+            <div className="h-full">
+              <button className="h-full px-8 bg-secondary text-white rounded  hover:btn-second-hover">
+                Buy Now
+              </button>
+            </div>
+            {/* Like */}
+            <div className="h-full">
+              <button
+                value={like}
+                onClick={handleLike}
+                className="h-full px-2 border border-gray-300 rounded hover:bg-gray-100"
+              >
+                {liked ? (
+                  <AiFillHeart className="text-3xl fill-red-400" />
+                ) : (
                   <AiOutlineHeart className="text-3xl" />
-                  {/* <AiFillHeart className="text-3xl text-secondary" /> */}
-                </button>
+                )}
+              </button>
+            </div>
+          </div>
+          <div className="mt-10 border border-gray-300 rounded divide-y ">
+            <div className="flex items-center justify-start p-5">
+              <span className="text-3xl mr-3 w-[40px]">
+                <TbTruckDelivery />
+              </span>
+              <div>
+                <p className=" font-semibold">Free Delivery</p>
+                <Link
+                  to={config.routes.comming_soon}
+                  className="hover:underline font-medium  text-[13px]"
+                >
+                  Enter your postal code for Delivery Availability
+                </Link>
               </div>
             </div>
-            <div className="mt-10 border border-gray-300 rounded divide-y ">
-              <div className="flex items-center justify-start p-5">
-                <span className="text-3xl mr-3 w-[40px]">
-                  <TbTruckDelivery />
-                </span>
-                <div>
-                  <p className=" font-semibold">Free Delivery</p>
-                  <Link
-                    to={config.routes.comming_soon}
-                    className="hover:underline font-medium  text-[13px]"
-                  >
-                    Enter your postal code for Delivery Availability
-                  </Link>
-                </div>
-              </div>
-              <div className="flex items-center justify-start p-5">
-                <span className="text-3xl mr-3 w-[40px]">
-                  <MdLoop />
-                </span>
-                <div>
-                  <p className=" font-semibold">Return Delivery</p>
-                  <Link
-                    to={config.routes.comming_soon}
-                    className="hover:underline font-medium text-[13px]"
-                  >
-                    Free 30 Days Delivery Returns. Details
-                  </Link>
-                </div>
+            <div className="flex items-center justify-start p-5">
+              <span className="text-3xl mr-3 w-[40px]">
+                <MdLoop />
+              </span>
+              <div>
+                <p className=" font-semibold">Return Delivery</p>
+                <Link
+                  to={config.routes.comming_soon}
+                  className="hover:underline font-medium text-[13px]"
+                >
+                  Free 30 Days Delivery Returns. Details
+                </Link>
               </div>
             </div>
           </div>
         </div>
-      </Tab.Group>
+      </div>
       <div>
         <Title title="Related Item" />
         <HeaderContainer className="flex justify-between max-sm:hidden">
@@ -284,7 +306,7 @@ function ProductDetail() {
           modules={[Navigation]}
           spaceBetween={8}
           slidesPerView={2}
-          className="mt-4 flex lg:hidden"
+          className="mt-4 ml-2 flex lg:hidden"
           ref={slideDetailRef}
         >
           {ProductData.map((product) => {

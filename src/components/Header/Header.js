@@ -94,6 +94,7 @@ function Header() {
           )}
         </Popover.Group>
       </nav>
+      {/* Mobile */}
       <Dialog
         as="div"
         className="lg:hidden"
@@ -117,18 +118,21 @@ function Header() {
                 <div className="space-y-2 py-6">
                   <Link
                     to={config.routes.home}
+                    onClick={() => setMobileMenuOpen(false)}
                     className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     <span>Home</span>
                   </Link>
                   <Link
-                    to={config.routes.home}
+                    to={config.routes.contact}
+                    onClick={() => setMobileMenuOpen(false)}
                     className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     <span>Contact</span>
                   </Link>
                   <Link
-                    to={config.routes.home}
+                    to={config.routes.about}
+                    onClick={() => setMobileMenuOpen(false)}
                     className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     <span>About</span>
@@ -136,13 +140,15 @@ function Header() {
                 </div>
                 <div className="py-6">
                   <Link
-                    to={config.routes.home}
+                    to={config.routes.sign_up}
+                    onClick={() => setMobileMenuOpen(false)}
                     className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Sign Up
                   </Link>
                   <Link
-                    to={config.routes.home}
+                    to={config.routes.login}
+                    onClick={() => setMobileMenuOpen(false)}
                     className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Log In

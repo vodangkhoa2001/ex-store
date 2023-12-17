@@ -86,7 +86,7 @@ function ProductContainer() {
         modules={[Navigation]}
         spaceBetween={5}
         slidesPerView={2}
-        className="mt-10 lg:hidden mb-[70px]"
+        className="mt-10 lg:hidden mb-[70px] max-sm:ml-2"
         ref={slideRef}
       >
         {ProductData.map((pro) => {

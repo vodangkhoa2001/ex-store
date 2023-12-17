@@ -47,7 +47,7 @@ function BestSelling() {
       <SwiperContent
         spaceBetween={8}
         slidesPerView={2}
-        className="mt-10 lg:hidden flex mb-[70px] px-1"
+        className="mt-10 lg:hidden flex mb-[70px] px-1 max-sm:ml-2"
         ref={slideSellingRef}
       >
         {ProductData.map((pro) => {
